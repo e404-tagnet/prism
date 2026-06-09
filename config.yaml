@@ -1,0 +1,79 @@
+# PRISM Configuration — editable, but prefer AI-assisted edits via conversation
+# Human should not hand-edit scores; change structure and thresholds only.
+
+prism:
+  enabled: true
+  mode: shadow                    # shadow = log+surface metadata; active = rewrite system prompt
+
+  # Temperature control: early exploration vs late exploitation
+  temperature:
+    strategy: adaptive
+    initial: 0.85                 # first few turns: varied, exploratory
+    floor: 0.2                    # minimum temperature (never fully locked except factual)
+    decay_rate: 0.12              # per-turn decay toward floor
+    factual_lock: true            # factual queries forced to floor immediately
+    factual_triggers:             # keywords that trigger factual lock
+      - "what is"
+      - "how many"
+      - "date"
+      - "version"
+      - "exact"
+      - "accurate"
+
+  # Bayesian update weights
+  bayesian:
+    exploration_penalty: 0.5      # evidence weight multiplier when temp > 0.7
+    wrong_outcome_threshold: 0.3    # trigger assertiveness drift above this
+    assertiveness_step: 0.05      # how much assertiveness increments
+    max_assertiveness: 0.6        # cap to avoid becoming hostile
+
+  # Confidence floor thresholds
+  confidence:
+    produce_threshold: 0.55
+    clarify_threshold: 0.30       # below this, route = REFUSE unless override
+    refuse_message: "I'm not confident I understand what you're asking. Could you rephrase or add context?"
+
+  # Classifier weights (Hybrid = keyword + embedding)
+  classifiers:
+    default: hybrid
+    weights:
+      keyword: 0.6                # more reliable when centroids are fresh
+      embedding: 0.4              # will increase once centroids are real
+    # LLM classifier is disabled by default (too slow on CPU)
+    llm_enabled: false
+    llm_model: "phi4-mini"        # only used if enabled
+
+  # Embedding model — pulled via Ollama
+  embedder:
+    model: "nomic-embed-text"     # primary: proven, fast, CPU-friendly
+    fallback: "all-minilm"          # ultra-lightweight if speed critical
+    endpoint: "http://127.0.0.1:11434/api/embed"
+
+  # Memory paths (relative to project root)
+  memory:
+    core: "data/memory/core.md"
+    session: "data/memory/session.md"
+    decisions: "data/memory/decisions.md"
+    scratch: "data/memory/scratch.md"
+    centroids: "centroids/bias-centroids.json"
+
+  # Session tracking
+  session:
+    recent_turns_window: 6
+    topic_drift_threshold: 0.35     # Jaccard similarity floor
+    frustration_repeat_threshold: 3 # same question asked N times
+
+  # Interaction routes
+  routes:
+    comply:
+      description: "Acknowledge and proceed."
+      system_prompt_addition: ""
+    reframe:
+      description: "Offer alternatives or broaden perspective."
+      system_prompt_addition: "Consider offering 2-3 valid approaches rather than one definitive answer."
+    clarify:
+      description: "Probe for missing constraints or context."
+      system_prompt_addition: "Ask one specific clarifying question before proceeding."
+    challenge:
+      description: "Gently push back on assumptions or bias."
+      system_prompt_addition: "If the user is acting from unstated assumptions, surface them respectfully."

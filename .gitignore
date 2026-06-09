@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+.env
+.venv/
+
+# PRISM data (memory is personal, centroids can be regenerated)
+data/memory/*.md
+!data/memory/.gitkeep
+
+# Tests
+tests/__pycache__/
+tests/*.log
+
+# Editor
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
