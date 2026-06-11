@@ -2,7 +2,7 @@
 
 **P**robability-based **R**easoning / **I**ntent / **S**caffold / **M**iddleware
 
-A shadow cognitive layer for local LLM conversations. Classifies cognitive bias in user input, computes Bayesian confidence, recommends interaction routes, and learns from inferred outcomes — without governing the actual response.
+A shadow cognitive layer for local LLM conversations. Classifies cognitive bias in user input, computes Bayesian confidence, recommends interaction routes, and learns from inferred outcomes, all without governing the actual response.
 
 > Human-readable. AI-editable. Human-protected.
 
