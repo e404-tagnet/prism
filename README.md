@@ -11,7 +11,7 @@ A shadow cognitive layer for local LLM conversations. Classifies cognitive bias 
 - **Architecture first.** No UI. No integration hooks until the mechanism is sound.
 - **Local only.** Everything runs on the AG2i stack via Ollama.
 - **Exploration built in.** Early turns run hotter (diverse formats, approaches) to populate the probability table quickly. Factual accuracy is ring-fenced and always cold.
-- **Tamper-evident.** The human reads the memory, but edits it only through conversation — never by hand.
+- **Tamper-evident.** The human reads the memory, but edits it only through conversation and never by hand.
 
 ## Status
 
