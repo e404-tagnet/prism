@@ -16,7 +16,7 @@
 Copy these commands exactly (run from the PRISM folder):
 
 ```bash
-cd /home/e404/Dropbox/9-PROJECTS/PRISM
+cd /path/to/prism
 git init
 git add .
 git commit -m "init: architecture docs, config, and folder structure"
@@ -29,7 +29,7 @@ Replace `YOUR_USERNAME` with your actual GitHub username.
 
 ## Step 3: Branching Rule (ADHD-friendly)
 
-- `main` = always clean, always reviewed by me
+- `main` = always clean, always reviewed
 - `dev` = your play branch. Try stuff, break stuff
 - `feature/whatever` = if you want to experiment on your own
 
