@@ -15,6 +15,7 @@ data/memory/*.md
 # Tests
 tests/__pycache__/
 tests/*.log
+.pytest_cache/
 
 # Editor
 *.swp
