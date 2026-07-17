@@ -125,19 +125,29 @@ prism:
 
 ## What Is Missing Right Now
 
-1. Real centroids (will generate from hand-labeled examples once embedding model is pulled).
-2. Async HTTP layer (currently synchronous in research code).
-3. Held-out evaluation set (will log real conversations and label them).
+1. ~~Real centroids~~ — **Done.** Generated from nomic-embed-text, stored in `centroids/bias-centroids.json`.
+2. ~~Core module implementations~~ — **Done.** All modules in `src/prism/` are functional.
+3. Async HTTP layer — The Ollama client is currently synchronous. Async would improve throughput for batch embedding.
+4. Held-out evaluation set — Will log real conversations and label them.
+5. Active mode — Currently shadow-only. `active` mode (system prompt injection) not yet wired.
+6. Co-occurrence detector — Compounding bias pairs not yet implemented.
+7. Outcome feedback loop — Delayed inference from next user message needs stateful turn tracking.
 
-## What Works in Principle vs Reality
+## Module File Reference
 
-| Component | Principle | Reality Gap |
-|--|--|--|
-| Keyword classifier | Works now | Coarse but fast |
-| Embedding classifier | Works if centroids are real | Centroids are fiction until we generate them |
-| Session tracker | Session JSON + timestamps | Needs robust JSON read/write |
-| Bayesian math | Formula is correct | Priors are arbitrary; they'll self-correct with data |
-| Outcome feedback | Needs next message | Requires stateful turn tracking |
+| Module | Source File | Status |
+|---|---|---|
+| Intent Extractor | `src/prism/core/intent.py` | Works |
+| Hybrid Classifier | `src/prism/classifiers/hybrid.py` | Works |
+| Keyword module | `src/prism/classifiers/keyword.py` | Works |
+| Embed module | `src/prism/classifiers/embedding.py` | Works |
+| Co-Occurrence | *not yet implemented* | Missing |
+| Session Tracker | `src/prism/core/session.py` | Works |
+| Confidence Floor | `src/prism/routes/selector.py` | Works |
+| Bayesian Update | `src/prism/core/bayesian.py` | Works |
+| Route Selector | `src/prism/routes/selector.py` | Works |
+| Memory I/O | `src/prism/core/memory.py` | Works |
+| Outcome Feedback | *not yet implemented* | Missing |
 
 ## Backup Strategy
 

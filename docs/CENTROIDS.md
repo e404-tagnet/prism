@@ -12,14 +12,14 @@ Now a new cup arrives. You don't know what it is. You taste it and ask: *is this
 
 The research code had fake float arrays like `[0.12, -0.45, 0.67]`. They looked like embeddings but were **made-up numbers**. That meant the classifier was doing arithmetic on fiction.
 
-## How We Fix It
+## How We Fixed It
 
-1. Pull a real embedding model (e.g., `nomic-embed-text`).
-2. Write 5–10 example phrases for each bias category.
-3. Ask Ollama to embed each phrase → you get real vectors (arrays of ~768 numbers).
-4. Average those vectors → that's your real centroid.
-5. Save it in `centroids/bias-centroids.json`.
-6. From then on, the classifier uses **measured** centers, not guessed ones.
+1. ✅ Pulled `nomic-embed-text` via Ollama.
+2. ✅ Wrote 10 example phrases for each of 8 bias categories.
+3. ✅ Embedded each phrase via Ollama → real vectors (768 numbers each).
+4. ✅ Averaged those vectors → real centroids.
+5. ✅ Saved them in `centroids/bias-centroids.json`.
+6. ✅ The embedding classifier now uses **measured** centers, not guessed ones.
 
 ## Visual
 
@@ -35,8 +35,8 @@ Embedding Space (768 dimensions)
 new message ●  ← which centroid is it closest to?
 ```
 
-## How Many Do We Need?
+## How Many Do We Have?
 
-Start with **6–8 bias categories**. Ten examples each. One run. ~5 minutes of generation. Then the classifier is grounded.
+**8 bias categories**, 10 examples each, generated in one run (~5 minutes). The classifier is grounded.
 
-If you want to add new biases later, you generate new centroids and drop them in the file. Nothing else changes.
+If you want to add new biases later, generate new centroids and drop them in the file. Nothing else changes.

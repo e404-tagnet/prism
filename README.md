@@ -15,4 +15,51 @@ A shadow cognitive layer for local LLM conversations. Classifies cognitive bias 
 
 ## Status
 
-Architecture phase. Research prototypes live elsewhere.
+Core pipeline implemented. Shadow-mode CLI operational. 13 tests passing. Centroids are real (nomic-embed-text, 768-dim).
+
+## Quick Start
+
+```bash
+cd /path/to/prism-scaffold
+PYTHONPATH=src:$PYTHONPATH python3 -m prism.cli "Your message here" --json
+```
+
+Or run interactively:
+
+```bash
+PYTHONPATH=src:$PYTHONPATH python3 -m prism.cli
+```
+
+Type `quit` to exit, `reset` to clear session state.
+
+## Running Tests
+
+```bash
+PYTHONPATH=src:$PYTHONPATH pytest tests/test_prism.py -v
+```
+
+## Project Structure
+
+```
+src/prism/
+  config.py              # Typed config.yaml loader
+  cli.py                 # Shadow-mode CLI entry point
+  core/
+    intent.py            # Lightweight intent extraction
+    bayesian.py          # Posterior updates + assertiveness drift
+    memory.py            # Markdown+YAML frontmatter I/O
+    pipeline.py          # Main orchestrator
+    session.py           # Topic drift + frustration tracking
+  classifiers/
+    keyword.py           # Regex-based bias detection
+    embedding.py         # Cosine-similarity against centroids
+    hybrid.py            # Configurable keyword/embedding blend
+  routes/
+    selector.py          # Bias-to-route mapper with confidence floors
+  integration/
+    ollama.py            # HTTP client for /api/embed
+centroids/
+  bias-centroids.json    # Real embeddings (8 categories × 768 dims)
+tests/
+  test_prism.py          # 13 tests for core logic
+```
