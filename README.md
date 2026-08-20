@@ -77,7 +77,6 @@ tests/
 ```
 
 <!-- TAGNET README FOOTER — start -->
----
 
 <div align="center">
 

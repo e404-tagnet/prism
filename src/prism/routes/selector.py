@@ -24,6 +24,21 @@ BIAS_ROUTE_MAP = {
     "availability": "challenge",
     "conjunction": "clarify",
     "overconfidence": "challenge",
+    "bandwagon": "challenge",
+    "belief_bias": "challenge",
+    "blind_spot": "challenge",
+    "clustering_illusion": "clarify",
+    "courtesy_bias": "reframe",
+    "endowment": "reframe",
+    "gambler_fallacy": "challenge",
+    "hyperbolic_discounting": "reframe",
+    "illusion_of_validity": "challenge",
+    "ostrich": "challenge",
+    "post_purchase": "challenge",
+    "reactive_devaluation": "reframe",
+    "risk_compensation": "challenge",
+    "status_quo": "reframe",
+    "stereotyping": "challenge",
 }
 
 

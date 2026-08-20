@@ -46,6 +46,67 @@ KEYWORD_MAP: Dict[str, list] = {
         r"\b100%\s+sure\b", r"\bfigured\s+out\b", r"\bdon't\s+need\s+to\s+check\b",
         r"\bmy\s+intuition\b", r"\bknow\s+this\s+inside\b", r"\btrust\s+me\b",
     ],
+    "bandwagon": [
+        r"\beveryone\s+else\b", r"\bmost\s+people\b", r"\bthe\s+whole\s+team\b",
+        r"\bdepartment\s+knows\b", r"\bpopular\b", r"\btrending\b",
+        r"\bconsensus\b", r"\bwidely\s+accepted\b",
+    ],
+    "belief_bias": [
+        r"\bseems\s+about\s+right\b", r"\bbelievable\b", r"\bplausible\b",
+        r"\bconclusion\s+feels\b", r"\bdoesn't\s+follow\b", r"\bcan't\s+argue\b",
+    ],
+    "blind_spot": [
+        r"\bignore\s+her\b", r"\bignore\s+his\b", r"\bshe's\s+biased\b",
+        r"\bhe's\s+biased\b", r"\bnot\s+objective\b", r"\blacks\s+perspective\b",
+    ],
+    "clustering_illusion": [
+        r"\bpattern\b", r"\bcluster\b", r"\bthree\s+times\b", r"\bhappened\s+again\b",
+        r"\bsecond\s+week\b", r"\bthere\s+must\s+be\b", r"\bcoincidence\b",
+    ],
+    "courtesy_bias": [
+        r"\blet's\s+move\s+on\b", r"\bavoid\s+offence\b", r"\bsocially\s+acceptable\b",
+        r"\bnot\s+worth\s+arguing\b", r"\bagree\s+to\s+disagree\b",
+    ],
+    "endowment": [
+        r"\bcost\s+us\b", r"\balready\s+paid\b", r"\bcost\s+a\s+fortune\b",
+        r"\bcan't\s+throw\s+it\s+away\b", r"\bwe\s+built\b", r"\bwe\s+own\b",
+    ],
+    "gambler_fallacy": [
+        r"\bdue\b", r"\boverdue\b", r"\bunlikely\s+again\b", r"\bthree\s+times\b",
+        r"\bprobability\s+changed\b", r"\bluck\s+is\s+turning\b",
+    ],
+    "hyperbolic_discounting": [
+        r"\bASAP\b", r"\bsooner\b", r"\bright\s+now\b", r"\bquick\s+win\b",
+        r"\bimmediate\b", r"\bdelay\b", r"\blater\s+reward\b",
+    ],
+    "illusion_of_validity": [
+        r"\bworked\s+fine\s+before\b", r"\bshould\s+work\s+fine\b",
+        r"\bcoherent\s+story\b", r"\bprediction\s+accurate\b", r"\bdata\s+tells\b",
+    ],
+    "ostrich": [
+        r"\brun\s+out\s+of\s+time\b", r"\bpretending\s+it\s+doesn't\s+exist\b",
+        r"\bignoring\s+the\b", r"\bavoid\s+negative\b", r"\bnot\s+looking\b",
+    ],
+    "post_purchase": [
+        r"\bgood\s+call\b", r"\bwe\s+chose\s+well\b", r"\bright\s+decision\b",
+        r"\bwould\s+do\s+it\s+again\b", r"\bno\s+regrets\b",
+    ],
+    "reactive_devaluation": [
+        r"\bcompetitors\b", r"\btheir\s+products\b", r"\badversary\b",
+        r"\bopponent\b", r"\bnot\s+our\s+idea\b", r"\bcame\s+from\b",
+    ],
+    "risk_compensation": [
+        r"\bnew\s+equipment\b", r"\bcut\s+the\s+time\b", r"\bsafer\s+now\b",
+        r"\bless\s+careful\b", r"\btake\s+bigger\s+risks\b",
+    ],
+    "status_quo": [
+        r"\bif\s+it\s+(?:ain't|is\s+not)\s+broke\b", r"\bdon't\s+fix\b", r"\bcurrent\s+state\b",
+        r"\bwhy\s+change\b", r"\balways\s+done\s+this\s+way\b",
+    ],
+    "stereotyping": [
+        r"\balways\s+pessimists\b", r"\balways\s+optimists\b", r"\bthose\s+people\b",
+        r"\btypical\b", r"\ball\s+of\s+them\b", r"\bjust\s+like\b",
+    ],
 }
 
 
